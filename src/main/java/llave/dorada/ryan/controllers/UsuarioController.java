@@ -31,7 +31,7 @@ public class UsuarioController {
             @RequestBody UsuarioCreate usuarioCreate
     ) {
         TipoUsuario tipoUsuario = tipoUsuarioRepository.findById(usuarioCreate.getTipoUsuario()).orElseThrow();
-        return usuarioRepository.save(new Usuario(0, usuarioCreate.getNombre(), usuarioCreate.getApellidoPaterno(), usuarioCreate.getApellidoMaterno(), usuarioCreate.getFechaRegistro(), usuarioCreate.getEmail(), usuarioCreate.getContrasena(), tipoUsuario));
+        return usuarioRepository.save(new Usuario(0, usuarioCreate.getNombre(), usuarioCreate.getApellidoPaterno(), usuarioCreate.getApellidoMaterno(), usuarioCreate.getFechaRegistro(), tipoUsuario));
 
     }
 

@@ -14,23 +14,18 @@ public class Usuario {
     private String apellidoPaterno;
     private String apellidoMaterno;
     private LocalDate fechaRegistro;
-    private String email;
-    private String contrasena;
-
     @ManyToOne
     private TipoUsuario tipoUsuario;
 
     public Usuario() {
     }
 
-    public Usuario(int numeroUsuario, String nombre, String apellidoPaterno, String apellidoMaterno, LocalDate fechaRegistro, String email, String contrasena, TipoUsuario tipoUsuario) {
+    public Usuario(int numeroUsuario, String nombre, String apellidoPaterno, String apellidoMaterno, LocalDate fechaRegistro, TipoUsuario tipoUsuario) {
         this.numeroUsuario = numeroUsuario;
         this.nombre = nombre;
         this.apellidoPaterno = apellidoPaterno;
         this.apellidoMaterno = apellidoMaterno;
         this.fechaRegistro = fechaRegistro;
-        this.email = email;
-        this.contrasena = contrasena;
         this.tipoUsuario = tipoUsuario;
     }
 
