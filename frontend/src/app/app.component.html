@@ -1,8 +1,9 @@
-<div>
-  a
-  <app-usuario [usuario]="nombre" />
-  <app-login />
-  
-</div>
+<nav class="flex gap-10 bg-gray-200 p-4 items-center">
+  <a routerLink="/" routerLinkActive="active" class="text-2xl">Llave Dorada</a>
+  <a routerLink="/reportes" routerLinkActive="active" class="text-2xl">Reportes</a>
+  <a routerLink="/clientes" routerLinkActive="active" class="text-2xl">Clientes</a>
+</nav>
 
-<router-outlet />
+<main class="p-4">
+  <router-outlet />
+</main>

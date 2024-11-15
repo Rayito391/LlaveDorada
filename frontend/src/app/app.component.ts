@@ -1,15 +1,10 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { LoginComponent } from './login/login.component';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { UsuarioComponent } from './usuario/usuario.component';
+import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, LoginComponent, UsuarioComponent, HttpClientModule],
+  imports: [RouterOutlet, RouterLink, RouterLinkActive],
   templateUrl: './app.component.html',
 })
-export class AppComponent {
-  nombre = 'Rayo Felix de Jesus';
-}
+export class AppComponent {}

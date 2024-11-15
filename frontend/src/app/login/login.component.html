@@ -1,8 +1,0 @@
-<mat-form-field>
-    <mat-label>Categoria</mat-label>
-    <mat-select>
-        @for (categoria of categorias; track categoria.numeroCategoria) {
-            <mat-option [value]="categoria.numeroCategoria">{{categoria.descripcion}}</mat-option>
-        }
-    </mat-select>    
-</mat-form-field>
