@@ -1,0 +1,24 @@
+<form class="flex flex-col" [formGroup]="form" (ngSubmit)="onSubmit()">
+  <h1>{{ usuario ? "Actualizar" : "Crear" }} usuario</h1>
+  <mat-form-field>
+    <mat-label>Nombre</mat-label>
+    <input matInput formControlName="nombre" />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Apellido Materno</mat-label>
+    <input matInput formControlName="apellidoMaterno" />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Apellido Paterno</mat-label>
+    <input matInput formControlName="apellidoPaterno" />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Tipo usuario</mat-label>
+    <mat-select formControlName="tipoUsuario">
+      @for (tipoUsuarios of tipoUsuarios; track tipoUsuarios) {
+        <mat-option [value]="tipoUsuarios.numeroTipoUsuario">{{tipoUsuarios.descripcionTipoUsuario}}</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+  <button mat-flat-button>{{ usuario ? "Actualizar" : "Crear" }}</button>
+</form>

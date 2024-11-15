@@ -16,7 +16,6 @@ import {DatePipe} from "@angular/common";
   providers: [provideNativeDateAdapter(), DatePipe],
   imports: [
     MatInputModule, MatFormFieldModule, MatButtonModule, MatDatepickerModule, ReactiveFormsModule, MatSelectModule, HttpClientModule,
-
   ],
   templateUrl: './cliente-form.component.html',
   styleUrl: './cliente-form.component.css'
