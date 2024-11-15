@@ -1,0 +1,35 @@
+<form class="flex flex-col" [formGroup]="form" (ngSubmit)="onSubmit()">
+  <h1>{{ cliente ? "Actualizar" : "Crear" }} empleado</h1>
+  <mat-form-field>
+    <mat-label>Nombre</mat-label>
+    <input matInput formControlName="nombre" />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Apellido Materno</mat-label>
+    <input matInput formControlName="apellidoMaterno" />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Apellido Paterno</mat-label>
+    <input matInput formControlName="apellidoPaterno" />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Fecha Nacimiento</mat-label>
+    <input matInput [matDatepicker]="picker" formControlName="fechaNacimiento">
+    <mat-hint>MM/DD/YYYY</mat-hint>
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Domicilio</mat-label>
+    <input matInput formControlName="domicilio" />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Tipo cliente</mat-label>
+    <mat-select formControlName="tipoCliente">
+      @for (tipoCliente of tipoClientes; track tipoCliente) {
+        <mat-option [value]="tipoCliente.numeroTipoCliente">{{tipoCliente.descripcion}}</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+  <button mat-flat-button>{{ cliente ? "Actualizar" : "Crear" }}</button>
+</form>

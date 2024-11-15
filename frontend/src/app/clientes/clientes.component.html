@@ -1,1 +1,15 @@
-<p>clientes works!</p>
+<div class="grid grid-cols-2 gap-8">
+  <app-cliente-form [cliente]="selectedCliente" />
+  <div>
+    <ul>
+      @for (cliente of clientes; track cliente) {
+        <li class="flex gap-4 items-center p-2">
+          <span>{{ cliente.numeroCliente }} - {{ cliente.nombre }}</span>
+          <button mat-stroked-button class="border border-red-500" (click)="eliminar(cliente)">Eliminar</button>
+          <button mat-stroked-button class="border border-red-500" (click)="editar(cliente)">Actualizar</button>
+        </li>
+        <mat-divider />
+      }
+    </ul>
+  </div>
+</div>
