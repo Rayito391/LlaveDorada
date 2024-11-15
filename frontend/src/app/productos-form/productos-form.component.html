@@ -1,0 +1,24 @@
+<form class="flex flex-col" [formGroup]="form" (ngSubmit)="onSubmit()">
+  <h1>{{ producto ? "Actualizar" : "Crear" }} producto</h1>
+  <mat-form-field>
+    <mat-label>Descripcion</mat-label>
+    <input matInput formControlName="descripcion" />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Precio</mat-label>
+    <input matInput formControlName="precio" type="number" min="0" />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Existencia</mat-label>
+    <input matInput formControlName="existencia" type="number" min="0" />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Categoria</mat-label>
+    <mat-select formControlName="categoria">
+      @for (categoria of categorias; track categoria) {
+        <mat-option [value]="categoria.numeroCategoria">{{categoria.descripcion}}</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+  <button mat-flat-button>{{ producto ? "Actualizar" : "Crear" }}</button>
+</form>

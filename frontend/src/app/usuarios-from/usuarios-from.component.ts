@@ -6,13 +6,11 @@ import {MatDatepickerModule} from "@angular/material/datepicker";
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {MatSelectModule} from "@angular/material/select";
 import {HttpClient, HttpClientModule} from "@angular/common/http";
-import {provideNativeDateAdapter} from "@angular/material/core";
 import {TipoUsuario, Usuario} from "../types";
 
 @Component({
   selector: 'app-usuarios-from',
   standalone: true,
-  providers: [provideNativeDateAdapter()],
   imports: [MatInputModule, MatFormFieldModule, MatButtonModule, MatDatepickerModule, ReactiveFormsModule, MatSelectModule, HttpClientModule,],
   templateUrl: './usuarios-from.component.html',
   styleUrl: './usuarios-from.component.css'

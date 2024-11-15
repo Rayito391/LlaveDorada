@@ -1,0 +1,15 @@
+<div class="grid grid-cols-2 gap-8">
+  <app-productos-form [producto]="selectedProducto" />
+  <div>
+    <ul>
+      @for (producto of productos; track producto) {
+        <li class="flex gap-4 items-center p-2">
+          <span>{{ producto.numeroProducto }} - {{ producto.descripcion }}</span>
+          <button mat-stroked-button class="border border-red-500" (click)="eliminar(producto)">Eliminar</button>
+          <button mat-stroked-button class="border border-red-500" (click)="editar(producto)">Actualizar</button>
+        </li>
+        <mat-divider />
+      }
+    </ul>
+  </div>
+</div>
