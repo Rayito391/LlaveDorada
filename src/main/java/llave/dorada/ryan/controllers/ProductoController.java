@@ -42,17 +42,17 @@ public class ProductoController {
         return producto;
     }
 
-    @PostMapping(path = "/agregar")
+    @PostMapping
     public Producto addProducto(
             @RequestBody ProductoCreate productoCreate
     ) {
         Categoria categoria = categoriaRepository.findById(Math.toIntExact(productoCreate.getCategoria())).orElseThrow();
         Producto producto = new Producto(0, productoCreate.getDescripcion(),
-                productoCreate.getPrecio(), productoCreate.getExistencia(), productoCreate.getFechaRegistro(), categoria, true);
+                productoCreate.getPrecio(), productoCreate.getExistencia(), productoCreate.getFechaRegistro(), categoria, productoCreate.getActivo());
         return productoRepository.save(producto);
     }
 
-    @PutMapping(path = "/actualizar/{id}")
+    @PutMapping(path = "{id}")
     public Producto updateProducto(
             @PathVariable int id,
             @RequestBody ProductoCreate productoCreate
@@ -73,7 +73,7 @@ public class ProductoController {
         return productoRepository.save(producto);
     }
 
-    @DeleteMapping(path = "/eliminar/{id}")
+    @DeleteMapping(path = "{id}")
     public List<Producto> deleteProducto(@PathVariable int id) {
         Producto producto = productoRepository.findById(id).orElseThrow();
         producto.setActivo(false);

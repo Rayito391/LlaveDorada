@@ -10,13 +10,13 @@ public class ProductoCreate {
     private final int categoria;
     private boolean activo;
 
-    public ProductoCreate(String descripcion, double precio, int existencia, int categoria, boolean activo) {
+    public ProductoCreate(String descripcion, double precio, int existencia, int categoria) {
         this.descripcion = descripcion;
         this.precio = precio;
         this.existencia = existencia;
         this.fechaRegistro = LocalDate.now();
         this.categoria = categoria;
-        this.activo = activo;
+        this.activo = existencia > 0;
     }
 
     public String getDescripcion() {
@@ -39,7 +39,7 @@ public class ProductoCreate {
         return categoria;
     }
 
-    public boolean isActivo() {
+    public boolean getActivo() {
         return activo;
     }
 
