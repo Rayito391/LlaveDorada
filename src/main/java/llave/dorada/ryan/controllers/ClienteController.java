@@ -29,7 +29,7 @@ public class ClienteController {
         return clienteRepository.findAll();
     }
 
-    @PostMapping(path = "/agregar")
+    @PostMapping
     public Cliente addCliente(
             @RequestBody ClienteCreate clienteCreate
     ) {
@@ -37,7 +37,7 @@ public class ClienteController {
         return clienteRepository.save(new Cliente(0, clienteCreate.getNombre(), clienteCreate.getApellidoPaterno(), clienteCreate.getApellidoMaterno(), clienteCreate.getFechaNacimiento(), clienteCreate.getDomicilio(), clienteCreate.getFechaRegistro(), tipoCliente, List.of()));
     }
 
-    @PutMapping("/actualizar/{id}")
+    @PutMapping("{id}")
     public Cliente updateCliente(@PathVariable int id, @RequestBody ClienteCreate clienteCreate) {
 
         Cliente cliente = clienteRepository.findById(id).orElseThrow();
@@ -55,7 +55,7 @@ public class ClienteController {
         return clienteRepository.save(cliente);
     }
 
-    @DeleteMapping("/eliminar/{id}")
+    @DeleteMapping("{id}")
     public void deleteCliente(@PathVariable int id) {
         Cliente cliente = clienteRepository.findById(id).orElseThrow();
         clienteRepository.delete(cliente);

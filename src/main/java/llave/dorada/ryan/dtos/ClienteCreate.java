@@ -14,15 +14,15 @@ public class ClienteCreate {
     private final int tipoCliente;
     private final List<Integer> ventasList;
 
-    public ClienteCreate(String nombre, String apellidoPaterno, String apellidoMaterno, LocalDate fechaNacimiento, String domicilio, LocalDate fechaRegistro, int tipoCliente, List<Integer> ventasList) {
+    public ClienteCreate(String nombre, String apellidoPaterno, String apellidoMaterno, LocalDate fechaNacimiento, String domicilio, int tipoCliente) {
         this.nombre = nombre;
         this.apellidoPaterno = apellidoPaterno;
         this.apellidoMaterno = apellidoMaterno;
         this.fechaNacimiento = fechaNacimiento;
         this.domicilio = domicilio;
-        this.fechaRegistro = fechaRegistro;
         this.tipoCliente = tipoCliente;
-        this.ventasList = ventasList != null ? ventasList : List.of();
+        this.fechaRegistro = LocalDate.now();
+        this.ventasList = List.of();
     }
 
     public String getNombre() {
