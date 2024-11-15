@@ -1,0 +1,31 @@
+<div class="grid grid-cols-2">
+    <div>
+      <form [formGroup]="form">
+        <mat-form-field>
+          <mat-label>Numero cliente</mat-label>
+          <mat-select formControlName="numeroCliente">
+                @for (cliente of clientes; track cliente) {
+                    <mat-option [value]="cliente.numeroCliente">{{cliente.nombre}}</mat-option>
+                }
+          </mat-select>
+        </mat-form-field>
+      </form>
+    </div>
+  
+    <div class="flex">
+      <div>
+        <ul>
+            @for (venta of ventas; track venta) {
+                <li>
+                    <span class="w-1/4">{{ venta.cliente }} </span>
+                    <span class="w-1/4">{{ venta.fechaVenta }}</span>
+                    <span>{{venta.total}}</span>
+                </li>
+                <mat-divider/>
+            }
+        </ul>
+      </div>
+
+    </div>
+  </div>
+  

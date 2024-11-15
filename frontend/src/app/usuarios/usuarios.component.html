@@ -4,7 +4,8 @@
     <ul>
       @for (usuarios of usuarios; track usuarios) {
         <li class="flex gap-4 items-center p-2">
-          <span>{{ usuarios.numeroUsuario }} - {{ usuarios.nombre }}</span>
+          <span class="w-1/3">{{ usuarios.numeroUsuario }} - {{ usuarios.nombre }}</span>
+          <span class="w-1/3">{{ usuarios.apellidoPaterno }}</span>
           <button mat-stroked-button class="border border-red-500" (click)="eliminar(usuarios)">Eliminar</button>
           <button mat-stroked-button class="border border-red-500" (click)="editar(usuarios)">Actualizar</button>
         </li>

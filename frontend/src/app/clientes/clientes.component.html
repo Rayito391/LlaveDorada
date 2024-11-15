@@ -4,7 +4,9 @@
     <ul>
       @for (cliente of clientes; track cliente) {
         <li class="flex gap-4 items-center p-2">
-          <span>{{ cliente.numeroCliente }} - {{ cliente.nombre }}</span>
+          <span class="w-1/4">{{ cliente.numeroCliente }} - {{ cliente.nombre }}</span>
+          <span class="w-1/4">{{ cliente.apellidoPaterno }}</span>
+          <span class="w-1/4">{{ cliente.tipoCliente.descripcion }}</span>
           <button mat-stroked-button class="border border-red-500" (click)="eliminar(cliente)">Eliminar</button>
           <button mat-stroked-button class="border border-red-500" (click)="editar(cliente)">Actualizar</button>
         </li>

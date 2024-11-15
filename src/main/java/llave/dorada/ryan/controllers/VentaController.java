@@ -47,7 +47,7 @@ public class VentaController {
         return ventaRepository.findAll();
     }
 
-    @PostMapping(path = "/agregar")
+    @PostMapping(path = "")
     public Venta addVenta(@RequestBody VentaCreate ventaCreate) {
         Cliente cliente = clienteRepository.findById(ventaCreate.getNumeroCliente()).orElseThrow();
 
@@ -95,7 +95,7 @@ public class VentaController {
         return venta;
     }
 
-    @DeleteMapping(path = "/eliminar/{numeroVenta}")
+    @DeleteMapping(path = "/{numeroVenta}")
     public List<Venta> eliminarVenta(@PathVariable("numeroVenta") int numeroVenta) {
         Venta ventaExistente = ventaRepository.findById(numeroVenta)
                 .orElseThrow();
