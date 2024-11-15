@@ -1,5 +1,6 @@
 package llave.dorada.ryan.controllers;
 
+import llave.dorada.ryan.dtos.DetalleVentaCreate;
 import llave.dorada.ryan.dtos.VentaCreate;
 import llave.dorada.ryan.entities.Cliente;
 import llave.dorada.ryan.entities.DetalleVenta;
@@ -55,18 +56,18 @@ public class VentaController {
         venta.setCliente(cliente);
         venta.setFechaVenta(ventaCreate.getFechaVenta());
 
-        double totalVenta = ventaService.calcularTotalVenta(ventaCreate.getDetalleVentaList());
+        double totalVenta = ventaService.calcularTotalVenta(ventaCreate.getDetalleVentaCreateList());
 
         List<DetalleVenta> detalleVentaList = new ArrayList<>();
 
-        for (DetalleVenta detalleVentaCreate : ventaCreate.getDetalleVentaList()) {
-            int numeroProducto = detalleVentaCreate.getProducto();
+        for (DetalleVentaCreate detalleVentaCreate : ventaCreate.getDetalleVentaCreateList()) {
+            int numeroProducto = detalleVentaCreate.getNumeroProducto();
 
             if (!productoService.productoExiste(numeroProducto) || !productoService.verificarExistencia(numeroProducto)) {
                 throw new RuntimeException();
             }
 
-            Producto producto = productoRepository.findById(detalleVentaCreate.getProducto()).orElseThrow();
+            Producto producto = productoRepository.findById(detalleVentaCreate.getNumeroVenta()).orElseThrow();
 
             int cantidadVenta = detalleVentaCreate.getCantidad();
             if (producto.getExistencia() < cantidadVenta) {

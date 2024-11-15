@@ -1,5 +1,6 @@
 package llave.dorada.ryan.services;
 
+import llave.dorada.ryan.dtos.DetalleVentaCreate;
 import llave.dorada.ryan.entities.DetalleVenta;
 import llave.dorada.ryan.entities.Producto;
 import llave.dorada.ryan.repositories.ProductoRepository;
@@ -21,11 +22,11 @@ public class VentaService {
         this.ventaRepository = ventaRepository;
     }
 
-    public double calcularTotalVenta(List<DetalleVenta> detalleVentaList) {
+    public double calcularTotalVenta(List<DetalleVentaCreate> detalleVentaList) {
         double totalVenta = 0.0;
 
-        for (DetalleVenta detalleVenta : detalleVentaList) {
-            Producto producto = productoRepository.findById(detalleVenta.getProducto()).orElseThrow();
+        for (DetalleVentaCreate detalleVenta : detalleVentaList) {
+            Producto producto = productoRepository.findById(detalleVenta.getNumeroProducto()).orElseThrow();
 
             double totalProducto = producto.getPrecio() * detalleVenta.getCantidad();
             totalVenta += totalProducto;

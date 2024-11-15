@@ -10,13 +10,13 @@ public class VentaCreate {
     private int numeroCliente;
     private double total;
     private LocalDate fechaVenta;
-    private List<DetalleVenta> detalleVentaList;
+    private List<DetalleVentaCreate> detalleVentaCreateList;
 
 
-    public VentaCreate(int numeroCliente, LocalDate fechaVenta, List<DetalleVenta> detalleVentaList) {
+    public VentaCreate(int numeroCliente, LocalDate fechaVenta, List<DetalleVentaCreate> detalleVentaCreateList) {
         this.numeroCliente = numeroCliente;
         this.fechaVenta = LocalDate.now();
-        this.detalleVentaList = detalleVentaList;
+        this.detalleVentaCreateList = this.detalleVentaCreateList;
     }
 
     public int getNumeroCliente() {
@@ -43,11 +43,11 @@ public class VentaCreate {
         this.fechaVenta = fechaVenta;
     }
 
-    public List<DetalleVenta> getDetalleVentaList() {
-        return detalleVentaList;
+    public List<DetalleVentaCreate> getDetalleVentaCreateList() {
+        return detalleVentaCreateList;
     }
 
-    public void setDetalleVentaList(List<DetalleVenta> detalleVentaList) {
-        this.detalleVentaList = detalleVentaList;
+    public void setDetalleVentaCreateList(List<DetalleVentaCreate> detalleVentaCreateList) {
+        this.detalleVentaCreateList = detalleVentaCreateList;
     }
 }
