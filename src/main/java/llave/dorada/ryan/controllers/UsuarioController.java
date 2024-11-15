@@ -26,7 +26,7 @@ public class UsuarioController {
     }
 
 
-    @PostMapping(path = "/agregar")
+    @PostMapping
     public Usuario addUsuario(
             @RequestBody UsuarioCreate usuarioCreate
     ) {
@@ -35,7 +35,7 @@ public class UsuarioController {
 
     }
 
-    @PutMapping("/actualizar/{id}")
+    @PutMapping("{id}")
     public Usuario updateUsuario(@PathVariable int id, @RequestBody UsuarioCreate usuarioCreate) {
         Usuario usuario = usuarioRepository.findById(id).orElseThrow();
 
@@ -50,7 +50,7 @@ public class UsuarioController {
         return usuarioRepository.save(usuario);
     }
 
-    @DeleteMapping("/eliminar/{id}")
+    @DeleteMapping("{id}")
     public List<Usuario> deleteUsuario(@PathVariable int id) {
         Usuario usuario = usuarioRepository.findById(id).orElseThrow();
 
