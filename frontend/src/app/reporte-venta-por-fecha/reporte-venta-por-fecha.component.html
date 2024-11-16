@@ -19,7 +19,7 @@
       <th>Total</th>
     </tr>
     </thead>
-    <tbody>
+    <tbody class="text-center">
     <tr *ngFor="let venta of ventas">
       <td>{{ venta.cliente.nombre }}</td>
       <td>{{ venta.cliente.apellidoPaterno }}</td>
@@ -29,7 +29,6 @@
         <ul>
           @for (detalle of venta.detalleVentas; track detalle) {
             <li>
-              <span>{{ detalle.producto}}</span>
               <span>{{ detalle.producto.descripcion }}</span>
             </li >
           }

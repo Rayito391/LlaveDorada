@@ -19,10 +19,10 @@
         <th>Cantidad</th>
       </tr>
     </thead>
-    <tbody>
+    <tbody class="text-center">
       @for (detalle of detalles; track detalle) {
         <tr>
-          <td>{{detalle.producto}}</td>
+          <td>{{detalle.producto.descripcion}}</td>
           <td>{{detalle.cantidad}}</td>
         </tr>
       }

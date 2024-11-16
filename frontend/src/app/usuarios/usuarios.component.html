@@ -2,12 +2,12 @@
   <app-usuarios-from [usuario]="selectedUsuario" *ngIf="esAdministrador" />
   <div>
     <ul>
-      @for (usuarios of usuarios; track usuarios) {
+      @for (usuario of usuarios; track usuario) {
         <li class="flex gap-4 items-center p-2">
-          <span class="w-1/3">{{ usuarios.numeroUsuario }} - {{ usuarios.nombre }}</span>
-          <span class="w-1/3">{{ usuarios.apellidoPaterno }}</span>
-          <button mat-stroked-button class="border border-red-500" (click)="eliminar(usuarios)" [disabled]="!esAdministrador">Eliminar</button>
-          <button mat-stroked-button class="border border-red-500" (click)="editar(usuarios)" [disabled]="!esAdministrador">Actualizar</button>
+          <span class="w-1/4">{{ usuario.numeroUsuario }} - {{ usuario.nombre }}</span>
+          <span class="w-1/4">{{ usuario.apellidoPaterno }}</span>
+          <button mat-stroked-button class="border border-red-500" (click)="eliminar(usuario)" [disabled]="!esAdministrador">Eliminar</button>
+          <button mat-stroked-button class="border border-red-500" (click)="editar(usuario)" [disabled]="!esAdministrador">Actualizar</button>
         </li>
         <mat-divider />
       }

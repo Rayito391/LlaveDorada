@@ -17,14 +17,12 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
 import { ReporteVentaClienteComponent } from '../reporte-venta-cliente/reporte-venta-cliente.component';
 import { ReporteDetalleVentaComponent } from '../reporte-detalle-venta/reporte-detalle-venta.component';
-import {ReporteVentaPorFechaComponent} from "../reporte-venta-por-fecha/reporte-venta-por-fecha.component";
-import {ReporteVentaPorPeriodoComponent} from "../reporte-venta-por-periodo/reporte-venta-por-periodo.component";
-import {
-  ReporteVentaPorTipoClienteComponent
-} from "../reporte-venta-por-tipo-cliente/reporte-venta-por-tipo-cliente.component";
-import {ReporteVentaPorCategoriaComponent} from "../reporte-venta-por-categoria/reporte-venta-por-categoria.component";
-import {UsuarioActualService} from "../usuario-actual.service";
-import {Usuario} from "../types";
+import { ReporteVentaPorFechaComponent } from '../reporte-venta-por-fecha/reporte-venta-por-fecha.component';
+import { ReporteVentaPorPeriodoComponent } from '../reporte-venta-por-periodo/reporte-venta-por-periodo.component';
+import { ReporteVentaPorTipoClienteComponent } from '../reporte-venta-por-tipo-cliente/reporte-venta-por-tipo-cliente.component';
+import { ReporteVentaPorCategoriaComponent } from '../reporte-venta-por-categoria/reporte-venta-por-categoria.component';
+import { UsuarioActualService } from '../usuario-actual.service';
+import { Usuario } from '../types';
 
 @Component({
   standalone: true,
@@ -51,12 +49,12 @@ import {Usuario} from "../types";
   styleUrls: ['./reportes-form.component.css'],
 })
 export class ReportesFormComponent implements OnChanges {
-  selectedOption: number = 1;
-  esAdministrador = false;
+  form: FormGroup;
+  selectedOption: number | null = null;
 
-  constructor(private http: HttpClient, private usuarioActualService: UsuarioActualService) {
-    this.usuarioActualService.getEsAdministrador().subscribe((esAdministrador) => {
-      this.esAdministrador = esAdministrador;
+  constructor(private http: HttpClient) {
+    this.form = new FormGroup({
+      selectedOption: new FormControl(null, Validators.required),
     });
   }
 
