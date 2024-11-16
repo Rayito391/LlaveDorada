@@ -1,27 +1,20 @@
-<div class="grid grid-cols-3 px-20">
+<div class="grid grid-cols-3 px-20 w-full">
   <div>
-    <form class="flex flex-col" [formGroup]="form">
-      <div >
-        <mat-radio-group class="flex flex-col" formControlName="selectedOption">
-          <mat-radio-button value= "1" >Ventas por cliente específico</mat-radio-button>
-          <mat-radio-button value= "2" >Detalle de ventas por venta</mat-radio-button>
-          <mat-radio-button value= "3" >Ventas por fecha específica</mat-radio-button>
-          <mat-radio-button value= "4" >Ventas por periodo</mat-radio-button>
-          <mat-radio-button value= "5" >Ventas por tipo de cliente</mat-radio-button>
-          <mat-radio-button value= "6" >Ventas por categoría específica</mat-radio-button>
-        </mat-radio-group>
-      </div>
-    </form>
+    <div>
+      <mat-radio-group class="flex flex-col" [(ngModel)]="selectedOption">
+        <mat-radio-button value="1">Ventas por cliente específico</mat-radio-button>
+        <mat-radio-button value="2">Detalle de ventas por venta</mat-radio-button>
+        <mat-radio-button value="3">Ventas por fecha específica</mat-radio-button>
+        <mat-radio-button value="4">Ventas por periodo</mat-radio-button>
+        <mat-radio-button value="5">Ventas por tipo de cliente</mat-radio-button>
+        <mat-radio-button value="6">Ventas por categoría específica</mat-radio-button>
+      </mat-radio-group>
+    </div>
   </div>
-  <div class="border col-span-2">
-    <div>
-      <app-reporte-venta-cliente/>
-    </div>
-    <div>
-      <app-reporte-detalle-venta/>
-    </div>
-    <div>
-    </div>
+  <div class="w-full col-span-2">
+    <app-reporte-venta-cliente *ngIf="selectedOption == 1"/>
+    <app-reporte-detalle-venta *ngIf="selectedOption == 2"/>
+    <app-reporte-venta-por-fecha *ngIf="selectedOption == 3"/>
   </div>
 </div>
 

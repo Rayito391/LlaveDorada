@@ -1,3 +1,42 @@
-<p>
-  reporte-venta-por-fecha works!
-</p>
+<div class="w-full">
+  <form [formGroup]="form">
+    <mat-form-field>
+      <mat-label>Fecha Nacimiento</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="fecha">
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker />
+    </mat-form-field>
+  </form>
+  <table class="w-full table-auto">
+    <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Apellido Paterno</th>
+      <th>Apellido Materno</th>
+      <th>Fecha de venta</th>
+      <th>Productos</th>
+      <th>Total</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let venta of ventas">
+      <td>{{ venta.cliente.nombre }}</td>
+      <td>{{ venta.cliente.apellidoPaterno }}</td>
+      <td>{{ venta.cliente.apellidoMaterno }}</td>
+      <td>{{ venta.fechaVenta | date }}</td>
+      <td>
+        <ul>
+          @for (detalle of venta.detalleVentas; track detalle) {
+            <li>
+              <span>{{ detalle.producto}}</span>
+              <span>{{ detalle.producto.descripcion }}</span>
+            </li >
+          }
+        </ul>
+      </td>
+      <td>{{ venta.total | currency }}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>

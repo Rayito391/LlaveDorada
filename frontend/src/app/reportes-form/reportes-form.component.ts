@@ -17,6 +17,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
 import { ReporteVentaClienteComponent } from '../reporte-venta-cliente/reporte-venta-cliente.component';
 import { ReporteDetalleVentaComponent } from '../reporte-detalle-venta/reporte-detalle-venta.component';
+import {ReporteVentaPorFechaComponent} from "../reporte-venta-por-fecha/reporte-venta-por-fecha.component";
 
 @Component({
   standalone: true,
@@ -33,19 +34,16 @@ import { ReporteDetalleVentaComponent } from '../reporte-detalle-venta/reporte-d
     ReporteVentaClienteComponent,
     FormsModule,
     ReporteDetalleVentaComponent,
+    ReporteVentaPorFechaComponent,
   ],
   selector: 'app-reportes-form',
   templateUrl: './reportes-form.component.html',
   styleUrls: ['./reportes-form.component.css'],
 })
 export class ReportesFormComponent implements OnChanges {
-  form: FormGroup;
-  selectedOption: number | null = null;
+  selectedOption: number = 1;
 
   constructor(private http: HttpClient) {
-    this.form = new FormGroup({
-      selectedOption: new FormControl(null, Validators.required),
-    });
   }
 
   ngOnChanges(changes: SimpleChanges): void {}
