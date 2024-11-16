@@ -23,10 +23,6 @@ public class Producto {
     public Producto() {
     }
 
-    public Producto(int numeroProducto) {
-        this.numeroProducto = numeroProducto;
-    }
-
     public Producto(int numeroProducto, String descripcion, double precio, int existencia, LocalDate fechaRegistro, Categoria categoria, boolean activo) {
         this.numeroProducto = numeroProducto;
         this.descripcion = descripcion;

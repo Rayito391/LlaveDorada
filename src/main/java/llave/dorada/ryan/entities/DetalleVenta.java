@@ -15,12 +15,14 @@ public class DetalleVenta {
 
     @ManyToOne
     private Producto producto;
+
     private int cantidad;
 
     public DetalleVenta() {
     }
 
-    public DetalleVenta(Venta venta, Producto producto, int cantidad) {
+    public DetalleVenta(int numeroDetalleventa, Venta venta, Producto producto, int cantidad) {
+        this.numeroDetalleventa = numeroDetalleventa;
         this.venta = venta;
         this.producto = producto;
         this.cantidad = cantidad;
@@ -42,8 +44,8 @@ public class DetalleVenta {
         this.venta = numeroVenta;
     }
 
-    public int getProducto() {
-        return producto.getNumeroProducto();
+    public Producto getProducto() {
+        return producto;
     }
 
     public void setProducto(Producto numeroProducto) {

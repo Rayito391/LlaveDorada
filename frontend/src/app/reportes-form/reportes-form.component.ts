@@ -18,6 +18,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { ReporteVentaClienteComponent } from '../reporte-venta-cliente/reporte-venta-cliente.component';
 import { ReporteDetalleVentaComponent } from '../reporte-detalle-venta/reporte-detalle-venta.component';
 import {ReporteVentaPorFechaComponent} from "../reporte-venta-por-fecha/reporte-venta-por-fecha.component";
+import {ReporteVentaPorPeriodoComponent} from "../reporte-venta-por-periodo/reporte-venta-por-periodo.component";
 
 @Component({
   standalone: true,
@@ -35,6 +36,7 @@ import {ReporteVentaPorFechaComponent} from "../reporte-venta-por-fecha/reporte-
     FormsModule,
     ReporteDetalleVentaComponent,
     ReporteVentaPorFechaComponent,
+    ReporteVentaPorPeriodoComponent,
   ],
   selector: 'app-reportes-form',
   templateUrl: './reportes-form.component.html',

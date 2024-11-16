@@ -1,0 +1,39 @@
+<div class="grid grid-cols-3">
+  <form class="flex flex-col gap-4" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <mat-form-field>
+      <mat-label>Mes</mat-label>
+      <input type="number" matInput formControlName="mes" min="1" max="12" />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Año</mat-label>
+      <input type="number" matInput formControlName="anio" min="2000" max="2100" />
+    </mat-form-field>
+    <button mat-flat-button>Buscar</button>
+  </form>
+  <div class="col-span-2">
+    <table class="w-full">
+      <thead>
+        <tr>
+          <th>Fecha</th>
+          <th>Cliente</th>
+          <th>Producto</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (venta of ventas; track venta) {
+          <tr>
+            <td>{{ venta.fechaVenta }}</td>
+            <td>{{ venta.cliente.nombre }}</td>
+            <td>
+              @for (detalle of venta.detalleVentas; track detalle) {
+                <span>{{ detalle.producto.descripcion }}</span>
+              }
+            </td>
+            <td>{{ venta.total | currency }}</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>
