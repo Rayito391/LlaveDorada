@@ -3,6 +3,7 @@ import { ClientesComponent } from './clientes/clientes.component';
 import { ReportesComponent } from './reportes/reportes.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
 import { ProductosComponent } from './productos/productos.component';
+import {VentasComponent} from "./ventas/ventas.component";
 
 export const routes: Routes = [
   {
@@ -21,4 +22,8 @@ export const routes: Routes = [
     path: 'productos',
     component: ProductosComponent,
   },
+  {
+    path: 'ventas',
+    component: VentasComponent
+  }
 ];

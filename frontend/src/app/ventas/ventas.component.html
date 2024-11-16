@@ -1,0 +1,29 @@
+<div class="grid grid-cols-2 gap-8">
+  <form class="flex flex-col gap-4" [formGroup]="agregarDetalleVentaForm" (ngSubmit)="agregarDetalleVenta()">
+    <h1>Agregar Detalle Venta</h1>
+    <mat-form-field>
+      <mat-label>Producto</mat-label>
+      <mat-select formControlName="producto">
+        @for (producto of productos; track producto) {
+          <mat-option [value]="producto.numeroProducto">{{producto.descripcion}}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Cantidad</mat-label>
+      <input matInput type="number" min="0" formControlName="cantidad"/>
+    </mat-form-field>
+    <button mat-button color="primary">Agregar</button>
+  </form>
+  <form class="flex flex-col gap-4" [formGroup]="ventaForm" (ngSubmit)="crearVenta()">
+    <mat-form-field>
+      <mat-label>Cliente</mat-label>
+      <mat-select formControlName="cliente">
+        @for (cliente of clientes; track cliente) {
+          <mat-option [value]="cliente.numeroCliente">{{cliente.nombre}}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+    <button mat-button color="primary">Crear Venta</button>
+  </form>
+</div>

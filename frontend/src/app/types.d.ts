@@ -33,7 +33,7 @@ export interface Producto {
 
 export interface TipoUsuario {
   numeroTipoUsuario: number;
-  descripcionTipoUsuario: String;
+  descripcionTipoUsuario: "Operador" | "Administrador";
   fechaRegistro: string;
 }
 

@@ -4,12 +4,13 @@
     <a routerLink="/usuarios" routerLinkActive="active" class="text-2xl">Usuarios</a>
     <a routerLink="/clientes" routerLinkActive="active" class="text-2xl">Clientes</a>
     <a routerLink="/productos" routerLinkActive="active" class="text-2xl">Productos</a>
+    <a routerLink="/ventas" routerLinkActive="active" class="text-2xl">Ventas</a>
     <a routerLink="/reportes" routerLinkActive="active" class="text-2xl">Reportes</a>
   </div>
   <div class="flex items-center">
     <mat-form-field>
       <mat-label>Usuario</mat-label>
-      <mat-select>
+      <mat-select (valueChange)="changeUsuario($event)">
         @for (usuario of usuarios; track usuario) {
           <mat-option [value]="usuario">{{usuario.nombre}}</mat-option>
         }

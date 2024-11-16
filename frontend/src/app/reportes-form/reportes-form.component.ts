@@ -23,6 +23,8 @@ import {
   ReporteVentaPorTipoClienteComponent
 } from "../reporte-venta-por-tipo-cliente/reporte-venta-por-tipo-cliente.component";
 import {ReporteVentaPorCategoriaComponent} from "../reporte-venta-por-categoria/reporte-venta-por-categoria.component";
+import {UsuarioActualService} from "../usuario-actual.service";
+import {Usuario} from "../types";
 
 @Component({
   standalone: true,
@@ -50,8 +52,12 @@ import {ReporteVentaPorCategoriaComponent} from "../reporte-venta-por-categoria/
 })
 export class ReportesFormComponent implements OnChanges {
   selectedOption: number = 1;
+  usuarioActual: Usuario | null = null;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private usuarioActualService: UsuarioActualService) {
+    this.usuarioActualService.getUsuarioActual().subscribe((usuario) => {
+      this.usuarioActual = usuario;
+    });
   }
 
   ngOnChanges(changes: SimpleChanges): void {}
