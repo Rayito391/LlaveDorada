@@ -16,7 +16,7 @@ public class VentaCreate {
     public VentaCreate(int numeroCliente, LocalDate fechaVenta, List<DetalleVentaCreate> detalleVentaCreateList) {
         this.numeroCliente = numeroCliente;
         this.fechaVenta = LocalDate.now();
-        this.detalleVentaCreateList = this.detalleVentaCreateList;
+        this.detalleVentaCreateList = detalleVentaCreateList;
     }
 
     public int getNumeroCliente() {
