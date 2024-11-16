@@ -5,6 +5,8 @@ import {MatDivider, MatDividerModule} from "@angular/material/divider";
 import {UsuariosFromComponent} from "../usuarios-from/usuarios-from.component";
 import {Cliente, Usuario} from "../types";
 import {HttpClient} from "@angular/common/http";
+import {UsuarioActualService} from "../usuario-actual.service";
+import {NgIf} from "@angular/common";
 
 @Component({
   selector: 'app-usuarios',
@@ -12,7 +14,8 @@ import {HttpClient} from "@angular/common/http";
   imports: [
     MatButtonModule,
     MatDividerModule,
-    UsuariosFromComponent
+    UsuariosFromComponent,
+    NgIf
   ],
   templateUrl: './usuarios.component.html',
   styleUrl: './usuarios.component.css'
@@ -20,11 +23,15 @@ import {HttpClient} from "@angular/common/http";
 export class UsuariosComponent {
   usuarios: Usuario[] = [];
   selectedUsuario: Usuario | null = null;
+  esAdministrador = false;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private usuarioActualService: UsuarioActualService) {
     this.http.get<Usuario[]>('http://localhost:8080/usuarios').subscribe(usuario => {
       this.usuarios = usuario;
     });
+    usuarioActualService.getEsAdministrador().subscribe(esAdministrador => {
+      this.esAdministrador = esAdministrador
+    })
   }
 
   eliminar(usuario: Usuario) {

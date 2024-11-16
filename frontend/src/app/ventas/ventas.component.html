@@ -1,5 +1,5 @@
 <div class="grid grid-cols-2 gap-8">
-  <form class="flex flex-col gap-4" [formGroup]="agregarDetalleVentaForm" (ngSubmit)="agregarDetalleVenta()">
+  <form class="flex flex-col gap-4" [formGroup]="agregarDetalleVentaForm" (ngSubmit)="agregarDetalleVenta()" *ngIf="esAdministrador">
     <h1>Agregar Detalle Venta</h1>
     <mat-form-field>
       <mat-label>Producto</mat-label>
@@ -16,7 +16,7 @@
     <button mat-button color="primary">Agregar</button>
   </form>
   <div class="flex flex-col gap-4">
-    <form class="flex flex-col gap-4" [formGroup]="ventaForm" (ngSubmit)="crearVenta()">
+    <form class="flex flex-col gap-4" [formGroup]="ventaForm" (ngSubmit)="crearVenta()" *ngIf="esAdministrador">
       <mat-form-field>
         <mat-label>Cliente</mat-label>
         <mat-select formControlName="cliente">
@@ -26,7 +26,7 @@
         </mat-select>
       </mat-form-field>
       <button mat-button color="primary">Crear Venta</button>
-    </form>
+    </form >
     <table class="w-full">
       <thead>
         <tr>
@@ -41,7 +41,7 @@
             <td>{{venta.numeroVenta}}</td>
             <td>{{venta.total}}</td>
             <td>
-              <button mat-button color="warn" (click)="eliminarVenta(venta)">Eliminar</button>
+              <button mat-button color="warn" (click)="eliminarVenta(venta)" [disabled]="!esAdministrador">Eliminar</button>
             </td>
           </tr>
         }

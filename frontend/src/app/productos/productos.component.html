@@ -1,5 +1,5 @@
 <div class="grid grid-cols-2 gap-8">
-  <app-productos-form [producto]="selectedProducto" />
+  <app-productos-form [producto]="selectedProducto" *ngIf="esAdministrador" />
   <div>
     <ul>
       @for (producto of productos; track producto) {
@@ -7,8 +7,8 @@
           <span class="w-1/4">{{ producto.numeroProducto }} - {{ producto.descripcion }}</span>
           <span class="w-1/4">${{ producto.precio }}</span>
           <span class="w-1/4">{{producto.existencia}}</span>
-          <button mat-stroked-button class="border border-red-500" (click)="eliminar(producto)">Eliminar</button>
-          <button mat-stroked-button class="border border-red-500" (click)="editar(producto)">Actualizar</button>
+          <button mat-stroked-button class="border border-red-500" (click)="eliminar(producto)" [disabled]="!esAdministrador">Eliminar</button>
+          <button mat-stroked-button class="border border-red-500" (click)="editar(producto)" [disabled]="!esAdministrador">Actualizar</button>
         </li>
         <mat-divider />
       }

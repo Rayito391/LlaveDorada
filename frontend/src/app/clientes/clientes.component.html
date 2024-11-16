@@ -1,5 +1,5 @@
 <div class="grid grid-cols-2 gap-8">
-  <app-cliente-form [cliente]="selectedCliente" />
+  <app-cliente-form [cliente]="selectedCliente" *ngIf="esAdmininistrador" />
   <div>
     <ul>
       @for (cliente of clientes; track cliente) {
@@ -7,8 +7,8 @@
           <span class="w-1/4">{{ cliente.numeroCliente }} - {{ cliente.nombre }}</span>
           <span class="w-1/4">{{ cliente.apellidoPaterno }}</span>
           <span class="w-1/4">{{ cliente.tipoCliente.descripcion }}</span>
-          <button mat-stroked-button class="border border-red-500" (click)="eliminar(cliente)">Eliminar</button>
-          <button mat-stroked-button class="border border-red-500" (click)="editar(cliente)">Actualizar</button>
+          <button mat-stroked-button class="border border-red-500" (click)="eliminar(cliente)" [disabled]="!esAdmininistrador">Eliminar</button>
+          <button mat-stroked-button class="border border-red-500" (click)="editar(cliente)" [disabled]="!esAdmininistrador">Actualizar</button>
         </li>
         <mat-divider />
       }

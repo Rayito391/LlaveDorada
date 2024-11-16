@@ -6,12 +6,13 @@ import {Cliente, DetalleVenta, Producto, Usuario, Venta} from "../types";
 import {HttpClient, HttpClientModule} from "@angular/common/http";
 import {MatButtonModule} from "@angular/material/button";
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
-import {JsonPipe} from "@angular/common";
+import {JsonPipe, NgIf} from "@angular/common";
+import {UsuarioActualService} from "../usuario-actual.service";
 
 @Component({
   selector: 'app-ventas',
   standalone: true,
-  imports: [MatInputModule, MatFormFieldModule, MatSelectModule, HttpClientModule, MatButtonModule, ReactiveFormsModule, JsonPipe],
+  imports: [MatInputModule, MatFormFieldModule, MatSelectModule, HttpClientModule, MatButtonModule, ReactiveFormsModule, JsonPipe, NgIf],
   templateUrl: './ventas.component.html',
   styleUrl: './ventas.component.css'
 })
@@ -30,8 +31,9 @@ export class VentasComponent implements OnInit{
   ventaForm = new FormGroup({
     cliente: new FormControl('', Validators.required),
   })
+  esAdministrador = false
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private usuarioActualService: UsuarioActualService) {
   }
 
   ngOnInit() {
@@ -50,6 +52,9 @@ export class VentasComponent implements OnInit{
         this.ventas = ventas
       }
     )
+    this.usuarioActualService.getEsAdministrador().subscribe(esAdministrador => {
+      this.esAdministrador = esAdministrador
+    })
   }
 
   agregarDetalleVenta() {

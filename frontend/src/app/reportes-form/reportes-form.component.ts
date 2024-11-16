@@ -52,11 +52,11 @@ import {Usuario} from "../types";
 })
 export class ReportesFormComponent implements OnChanges {
   selectedOption: number = 1;
-  usuarioActual: Usuario | null = null;
+  esAdministrador = false;
 
   constructor(private http: HttpClient, private usuarioActualService: UsuarioActualService) {
-    this.usuarioActualService.getUsuarioActual().subscribe((usuario) => {
-      this.usuarioActual = usuario;
+    this.usuarioActualService.getEsAdministrador().subscribe((esAdministrador) => {
+      this.esAdministrador = esAdministrador;
     });
   }
 
