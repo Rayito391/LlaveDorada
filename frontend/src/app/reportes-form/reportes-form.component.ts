@@ -16,6 +16,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
 import { ReporteVentaClienteComponent } from '../reporte-venta-cliente/reporte-venta-cliente.component';
+import { ReporteDetalleVentaComponent } from '../reporte-detalle-venta/reporte-detalle-venta.component';
 
 @Component({
   standalone: true,
@@ -31,6 +32,7 @@ import { ReporteVentaClienteComponent } from '../reporte-venta-cliente/reporte-v
     MatRadioModule,
     ReporteVentaClienteComponent,
     FormsModule,
+    ReporteDetalleVentaComponent,
   ],
   selector: 'app-reportes-form',
   templateUrl: './reportes-form.component.html',

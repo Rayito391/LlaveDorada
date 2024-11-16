@@ -1,0 +1,28 @@
+<div class="flex w-full gap-10">
+  <div>
+    <form [formGroup]="form">
+      <mat-form-field>
+        <mat-label>Numero Venta</mat-label>
+        <mat-select formControlName="numeroVenta">
+              @for (venta of ventas; track venta) {
+                  <mat-option [value]="venta.numeroVenta">{{venta.numeroVenta}}</mat-option>
+              }
+        </mat-select>
+      </mat-form-field>
+    </form>
+  </div>
+
+  <div class="w-4/5 gap-4">
+    <div class="w-full">
+      <ul class="">
+          @for (detalle of ventas; track detalles) {
+              <li class="flex text-lg">
+                  <span> {{detalle.detalleVentas}} </span>
+              </li>
+              <mat-divider/>
+          }
+      </ul>
+    </div>
+
+  </div>
+</div>

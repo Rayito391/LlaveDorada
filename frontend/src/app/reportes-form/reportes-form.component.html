@@ -1,38 +1,29 @@
-<div class="grid grid-cols-2 ">
-  <form class="flex flex-col" [formGroup]="form">
-    <div class="flex flex-col">
-      <mat-radio-group class="flex flex-col" formControlName="selectedOption">
-        <mat-radio-button value= "1" >Ventas por cliente específico</mat-radio-button>
-        <mat-radio-button value= "2" >Detalle de ventas por venta</mat-radio-button>
-        <mat-radio-button value= "3" >Ventas por fecha específica</mat-radio-button>
-        <mat-radio-button value= "4" >Ventas por periodo</mat-radio-button>
-        <mat-radio-button value= "5" >Ventas por tipo de cliente</mat-radio-button>
-        <mat-radio-button value= "6" >Ventas por categoría específica</mat-radio-button>
-      </mat-radio-group>
-    </div>
-  </form>
-  <!-- <div *ngSwitch="form.value.selectedOption">
-    <div *ngSwitchCase="1">
+<div class="grid grid-cols-3 px-20">
+  <div>
+    <form class="flex flex-col" [formGroup]="form">
+      <div >
+        <mat-radio-group class="flex flex-col" formControlName="selectedOption">
+          <mat-radio-button value= "1" >Ventas por cliente específico</mat-radio-button>
+          <mat-radio-button value= "2" >Detalle de ventas por venta</mat-radio-button>
+          <mat-radio-button value= "3" >Ventas por fecha específica</mat-radio-button>
+          <mat-radio-button value= "4" >Ventas por periodo</mat-radio-button>
+          <mat-radio-button value= "5" >Ventas por tipo de cliente</mat-radio-button>
+          <mat-radio-button value= "6" >Ventas por categoría específica</mat-radio-button>
+        </mat-radio-group>
+      </div>
+    </form>
+  </div>
+  <div class="border col-span-2">
+    <div>
       <app-reporte-venta-cliente/>
     </div>
-    <div *ngSwitchCase="2">
-      <h1>2</h1>
+    <div>
+      <app-reporte-detalle-venta/>
     </div>
-    <div *ngSwitchCase="3">
-      <h1>3</h1>
+    <div>
     </div>
-    <div *ngSwitchCase="4">
-      <h1>4</h1>
-    </div>
-    <div *ngSwitchCase="5">
-      <h1>5</h1>
-    </div>
-    <div *ngSwitchCase="6">
-      <h1>6</h1>
-    </div>
-  </div> -->
-  <div>
-    <app-reporte-venta-cliente/>
   </div>
 </div>
+
+
 

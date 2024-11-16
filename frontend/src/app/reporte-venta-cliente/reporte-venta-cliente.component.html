@@ -1,25 +1,35 @@
-<div class="grid grid-cols-2">
+<div class="flex w-full gap-10">
     <div>
       <form [formGroup]="form">
         <mat-form-field>
           <mat-label>Numero cliente</mat-label>
           <mat-select formControlName="numeroCliente">
                 @for (cliente of clientes; track cliente) {
-                    <mat-option [value]="cliente.numeroCliente">{{cliente.nombre}}</mat-option>
+                    <mat-option [value]="cliente.numeroCliente">{{cliente.numeroCliente}}</mat-option>
                 }
           </mat-select>
         </mat-form-field>
       </form>
     </div>
   
-    <div class="flex">
-      <div>
-        <ul>
+    <div class="w-4/5 gap-4">
+      <div class="w-full">
+        <ul class="">
             @for (venta of ventas; track venta) {
-                <li>
-                    <span class="w-1/4">{{ venta.cliente }} </span>
-                    <span class="w-1/4">{{ venta.fechaVenta }}</span>
-                    <span>{{venta.total}}</span>
+                <li class="flex text-lg">
+                    <span class="w-1/4" >{{ venta.cliente.nombre }} </span>
+                    <span class="w-1/4">{{ venta.cliente.apellidoPaterno }} </span>
+                    <span class="w-1/4" >{{ venta.cliente.apellidoMaterno }} </span>
+                    <span class="w-1/4" >{{ venta.fechaVenta }}</span>
+                    <ul>
+                      @for (detalle of venta.detalleVentas; track detalle) {
+                        <li class="w-1/4">
+                          <span class="w-1/3">{{ detalle.producto}}</span>
+                          <span class="w-1/3">{{ detalle.producto.descripcion }}</span>
+                        </li >                       
+                      }
+                    </ul>
+                    <span class="w-1/4">${{ venta.total }}</span>
                 </li>
                 <mat-divider/>
             }

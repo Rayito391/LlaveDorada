@@ -13,7 +13,7 @@ import {
   Validators,
   ReactiveFormsModule,
 } from '@angular/forms';
-import { Cliente, DetalleVenta, Venta, Producto } from '../types';
+import { Cliente, DetalleVenta, Venta } from '../types';
 
 @Component({
   standalone: true,
@@ -27,48 +27,47 @@ import { Cliente, DetalleVenta, Venta, Producto } from '../types';
     MatFormFieldModule,
     ReactiveFormsModule,
   ],
-  selector: 'app-reporte-venta-cliente',
-  templateUrl: './reporte-venta-cliente.component.html',
-  styleUrls: ['./reporte-venta-cliente.component.css'],
+  selector: 'app-reporte-detalle-venta',
+  templateUrl: './reporte-detalle-venta.component.html',
+  styleUrls: ['./reporte-detalle-venta.component.css'],
 })
-export class ReporteVentaClienteComponent implements OnInit {
+export class ReporteDetalleVentaComponent implements OnInit {
   form: FormGroup;
-  clientes: Cliente[] = [];
   ventas: Venta[] = [];
-  detalle: DetalleVenta[] = [];
-  productos: Producto[] = [];
+  detalles: DetalleVenta[] = [];
 
   constructor(private http: HttpClient) {
     this.form = new FormGroup({
-      numeroCliente: new FormControl('', Validators.required),
+      numeroVenta: new FormControl('', Validators.required),
     });
   }
 
   ngOnInit(): void {
     this.http
-      .get<Cliente[]>('http://localhost:8080/clientes')
-      .subscribe((clientes) => {
-        this.clientes = clientes;
+      .get<Venta[]>('http://localhost:8080/ventas')
+      .subscribe((ventas) => {
+        this.ventas = ventas;
       });
 
-    this.form.get('numeroCliente')?.valueChanges.subscribe((numeroCliente) => {
-      if (numeroCliente) {
-        this.obtenerVentasPorCliente(numeroCliente);
+    this.form.get('numeroVenta')?.valueChanges.subscribe((numeroVenta) => {
+      if (numeroVenta) {
+        this.obtenerDetallesPorVentas(numeroVenta);
       }
     });
   }
 
-  onClienteSeleccionado(numeroCliente: string): void {
-    this.obtenerVentasPorCliente(numeroCliente);
+  onVentaSeleccionado(numeroVenta: string): void {
+    this.obtenerDetallesPorVentas(numeroVenta);
   }
 
-  obtenerVentasPorCliente(numeroCliente: string): void {
+  obtenerDetallesPorVentas(numeroVenta: string): void {
     this.http
-      .get<Venta[]>(
-        `http://localhost:8080/reportes/ventas/cliente/${numeroCliente}`
+      .get<DetalleVenta[]>(
+        `http://localhost:8080/reportes/ventas/detalle/${numeroVenta}`
       )
-      .subscribe((ventas) => {
-        this.ventas = ventas;
+      .subscribe((detalles) => {
+        this.detalles = detalles;
       });
+    console.log(this.detalles);
   }
 }
