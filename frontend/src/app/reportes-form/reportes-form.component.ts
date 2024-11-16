@@ -19,6 +19,9 @@ import { ReporteVentaClienteComponent } from '../reporte-venta-cliente/reporte-v
 import { ReporteDetalleVentaComponent } from '../reporte-detalle-venta/reporte-detalle-venta.component';
 import {ReporteVentaPorFechaComponent} from "../reporte-venta-por-fecha/reporte-venta-por-fecha.component";
 import {ReporteVentaPorPeriodoComponent} from "../reporte-venta-por-periodo/reporte-venta-por-periodo.component";
+import {
+  ReporteVentaPorTipoClienteComponent
+} from "../reporte-venta-por-tipo-cliente/reporte-venta-por-tipo-cliente.component";
 
 @Component({
   standalone: true,
@@ -37,6 +40,7 @@ import {ReporteVentaPorPeriodoComponent} from "../reporte-venta-por-periodo/repo
     ReporteDetalleVentaComponent,
     ReporteVentaPorFechaComponent,
     ReporteVentaPorPeriodoComponent,
+    ReporteVentaPorTipoClienteComponent,
   ],
   selector: 'app-reportes-form',
   templateUrl: './reportes-form.component.html',

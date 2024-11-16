@@ -102,7 +102,7 @@ public class VentaController {
                 .orElseThrow();
 
         for (DetalleVenta detalleVenta : ventaExistente.getDetalleVentas()) {
-            int numeroProducto = detalleVenta.getProducto();
+            int numeroProducto = detalleVenta.getProducto().getNumeroProducto();
             Producto producto = productoRepository.findById(numeroProducto).orElseThrow();
             int cantidadVenta = detalleVenta.getCantidad();
             producto.setExistencia(producto.getExistencia() + cantidadVenta);
