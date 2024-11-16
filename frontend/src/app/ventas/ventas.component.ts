@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {MatInputModule} from "@angular/material/input";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatSelectModule} from "@angular/material/select";
-import {Cliente, DetalleVenta, Producto, Usuario} from "../types";
+import {Cliente, DetalleVenta, Producto, Usuario, Venta} from "../types";
 import {HttpClient, HttpClientModule} from "@angular/common/http";
 import {MatButtonModule} from "@angular/material/button";
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
@@ -18,6 +18,7 @@ import {JsonPipe} from "@angular/common";
 export class VentasComponent implements OnInit{
   clientes: Cliente[] = []
   productos: Producto[] = []
+  ventas: Venta[] = []
   detalleVentas: {
     numeroProducto: number,
     cantidad: number
@@ -44,6 +45,11 @@ export class VentasComponent implements OnInit{
         this.clientes = clientes
       }
     )
+    this.http.get<Venta[]>('http://localhost:8080/ventas').subscribe(
+      ventas => {
+        this.ventas = ventas
+      }
+    )
   }
 
   agregarDetalleVenta() {
@@ -61,6 +67,12 @@ export class VentasComponent implements OnInit{
       numeroCliente: Number(this.ventaForm.value.cliente),
       detalleVentaCreateList: this.detalleVentas
     }).subscribe(() => {
+      window.location.reload()
+    })
+  }
+
+  eliminarVenta(venta: Venta) {
+    this.http.delete(`http://localhost:8080/ventas/${venta.numeroVenta}`).subscribe(() => {
       window.location.reload()
     })
   }

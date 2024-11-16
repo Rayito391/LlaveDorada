@@ -15,15 +15,37 @@
     </mat-form-field>
     <button mat-button color="primary">Agregar</button>
   </form>
-  <form class="flex flex-col gap-4" [formGroup]="ventaForm" (ngSubmit)="crearVenta()">
-    <mat-form-field>
-      <mat-label>Cliente</mat-label>
-      <mat-select formControlName="cliente">
-        @for (cliente of clientes; track cliente) {
-          <mat-option [value]="cliente.numeroCliente">{{cliente.nombre}}</mat-option>
+  <div class="flex flex-col gap-4">
+    <form class="flex flex-col gap-4" [formGroup]="ventaForm" (ngSubmit)="crearVenta()">
+      <mat-form-field>
+        <mat-label>Cliente</mat-label>
+        <mat-select formControlName="cliente">
+          @for (cliente of clientes; track cliente) {
+            <mat-option [value]="cliente.numeroCliente">{{cliente.nombre}}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+      <button mat-button color="primary">Crear Venta</button>
+    </form>
+    <table class="w-full">
+      <thead>
+        <tr>
+          <th>Numero Venta</th>
+          <th>Total</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (venta of ventas; track venta) {
+          <tr>
+            <td>{{venta.numeroVenta}}</td>
+            <td>{{venta.total}}</td>
+            <td>
+              <button mat-button color="warn" (click)="eliminarVenta(venta)">Eliminar</button>
+            </td>
+          </tr>
         }
-      </mat-select>
-    </mat-form-field>
-    <button mat-button color="primary">Crear Venta</button>
-  </form>
+      </tbody>
+    </table>
+  </div>
 </div>
