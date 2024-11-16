@@ -67,7 +67,7 @@ public class VentaController {
                 throw new RuntimeException();
             }
 
-            Producto producto = productoRepository.findById(detalleVentaCreate.getNumeroVenta()).orElseThrow();
+            Producto producto = productoRepository.findById(detalleVentaCreate.getNumeroProducto()).orElseThrow();
 
             int cantidadVenta = detalleVentaCreate.getCantidad();
             if (producto.getExistencia() < cantidadVenta) {
