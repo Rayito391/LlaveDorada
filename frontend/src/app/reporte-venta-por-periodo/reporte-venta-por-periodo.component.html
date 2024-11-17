@@ -27,7 +27,7 @@
             <td>{{ venta.cliente.nombre }}</td>
             <td>
               @for (detalle of venta.detalleVentas; track detalle) {
-                <span>{{ detalle.producto.descripcion }}</span>
+                <span>{{ detalle.producto?.descripcion }}</span>
               }
             </td>
             <td>{{ venta.total | currency }}</td>

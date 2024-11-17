@@ -1,17 +1,30 @@
-<div class="grid grid-cols-2 gap-8">
+<div class="grid grid-cols-3 gap-8">
   <app-cliente-form [cliente]="selectedCliente" *ngIf="esAdmininistrador" />
-  <div>
-    <ul>
-      @for (cliente of clientes; track cliente) {
-        <li class="flex gap-4 items-center p-2">
-          <span class="w-1/4">{{ cliente.numeroCliente }} - {{ cliente.nombre }}</span>
-          <span class="w-1/4">{{ cliente.apellidoPaterno }}</span>
-          <span class="w-1/4">{{ cliente.tipoCliente.descripcion }}</span>
-          <button mat-stroked-button class="border border-red-500" (click)="eliminar(cliente)" [disabled]="!esAdmininistrador">Eliminar</button>
-          <button mat-stroked-button class="border border-red-500" (click)="editar(cliente)" [disabled]="!esAdmininistrador">Actualizar</button>
-        </li>
-        <mat-divider />
-      }
-    </ul>
+  <div class="col-span-2">
+    <h1>Lista de clientes</h1>
+    <table class="w-full text-lg">
+      <thead>
+        <tr>
+          <th>No. Cliente </th>
+          <th>Nombre </th>
+          <th>Apellido Paterno </th>
+          <th>Tipo Cliente</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody class="text-center">
+        @for (cliente  of clientes; track cliente) {
+          <tr>
+            <td>{{cliente.numeroCliente}}</td>
+            <td>{{cliente.nombre}}</td>
+            <td>{{cliente.apellidoPaterno}}</td>
+            <td>{{cliente.tipoCliente.descripcion}}</td>
+            <td><button mat-button color="warn" class="border border-red-500" (click)="eliminar(cliente)" [disabled]="!esAdmininistrador">Eliminar</button>
+              <button mat-button color="accent" class="border border-red-500" (click)="editar(cliente)" [disabled]="!esAdmininistrador">Actualizar</button>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
   </div>
 </div>

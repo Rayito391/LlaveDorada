@@ -1,16 +1,29 @@
-<div class="grid grid-cols-2 gap-8">
+<div class="grid grid-cols-3 gap-8">
   <app-usuarios-from [usuario]="selectedUsuario" *ngIf="esAdministrador" />
-  <div>
-    <ul>
-      @for (usuario of usuarios; track usuario) {
-        <li class="flex gap-4 items-center p-2">
-          <span class="w-1/4">{{ usuario.numeroUsuario }} - {{ usuario.nombre }}</span>
-          <span class="w-1/4">{{ usuario.apellidoPaterno }}</span>
-          <button mat-stroked-button class="border border-red-500" (click)="eliminar(usuario)" [disabled]="!esAdministrador">Eliminar</button>
-          <button mat-stroked-button class="border border-red-500" (click)="editar(usuario)" [disabled]="!esAdministrador">Actualizar</button>
-        </li>
-        <mat-divider />
-      }
-    </ul>
+  <div class="col-span-2 w-full">
+    <h1>Lista de usuarios</h1>
+    <table class="w-full text-lg">
+      <thead>
+        <tr>
+          <th>Nombre </th>
+          <th>Apellido</th>
+          <th>Tipo Usuario</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody class="text-center">
+        @for (usuario of usuarios; track usuario) {
+          <tr>
+            <td>{{usuario.nombre}}</td>
+            <td>{{usuario.apellidoPaterno}} </td>
+            <td>{{usuario.tipoUsuario.descripcionTipoUsuario}}</td>
+            <td>
+              <button mat-button color="warn" class="border border-red-500" (click)="eliminar(usuario)" [disabled]="!esAdministrador">Eliminar</button>
+              <button mat-button color="accent" class="border border-red-500" (click)="editar(usuario)" [disabled]="!esAdministrador">Actualizar</button>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
   </div>
 </div>

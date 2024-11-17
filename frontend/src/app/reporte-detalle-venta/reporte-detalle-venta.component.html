@@ -22,7 +22,7 @@
     <tbody class="text-center">
       @for (detalle of detalles; track detalle) {
         <tr>
-          <td>{{detalle.producto.descripcion}}</td>
+            <td>{{detalle.producto?.descripcion}}</td>
           <td>{{detalle.cantidad}}</td>
         </tr>
       }

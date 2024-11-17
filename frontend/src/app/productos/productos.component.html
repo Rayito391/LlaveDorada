@@ -1,17 +1,30 @@
-<div class="grid grid-cols-2 gap-8">
+<div class="grid grid-cols-3 gap-8">
   <app-productos-form [producto]="selectedProducto" *ngIf="esAdministrador" />
-  <div>
-    <ul>
-      @for (producto of productos; track producto) {
-        <li class="flex gap-4 items-center p-2">
-          <span class="w-1/4">{{ producto.numeroProducto }} - {{ producto.descripcion }}</span>
-          <span class="w-1/4">${{ producto.precio }}</span>
-          <span class="w-1/4">{{producto.existencia}}</span>
-          <button mat-stroked-button class="border border-red-500" (click)="eliminar(producto)" [disabled]="!esAdministrador">Eliminar</button>
-          <button mat-stroked-button class="border border-red-500" (click)="editar(producto)" [disabled]="!esAdministrador">Actualizar</button>
-        </li>
-        <mat-divider />
-      }
-    </ul>
+  <div class="w-full col-span-2">
+    <h1>Lista de productos</h1>
+    <table class="w-full text-lg">
+      <thead>
+        <th>No.Producto </th>
+        <th>Descripcion </th>
+        <th>Precio </th>
+        <th>Cantidad </th>
+        <th>Acciones</th>
+      </thead>
+      <tbody class="text-center">
+        @for (producto of productos; track producto) {
+          <tr>
+            <td>{{producto.numeroProducto}}</td>
+            <td>{{producto.descripcion}}</td>
+            <td>{{producto.precio}}</td>
+            <td>{{producto.existencia}}</td>
+            <td>
+              <button mat-button color="warn" class="border border-red-500" (click)="eliminar(producto)" [disabled]="!esAdministrador">Eliminar</button>
+          <button mat-button color="accent" class="border border-red-500" (click)="editar(producto)" [disabled]="!esAdministrador">Actualizar</button>
+
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
   </div>
 </div>

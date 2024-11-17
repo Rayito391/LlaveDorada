@@ -29,7 +29,7 @@
         <ul>
           @for (detalle of venta.detalleVentas; track detalle) {
             <li>
-              <span>{{ detalle.producto.descripcion }}</span>
+              <span>{{ detalle.producto?.descripcion }}</span>
             </li >
           }
         </ul>
